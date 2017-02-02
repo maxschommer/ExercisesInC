@@ -1,14 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-int main()
-{
-	char card_name[3];
-	int count = 0;
-	while (card_name[0] != 'X') {
-		puts("enter the card name: ");
-		scanf("%2s", card_name);
-		int val = 0;
-		switch(card_name[0]) {
+#include <limits.h>
+
+int card_values(char card_name[]) {
+	int val = 0;
+	switch(card_name[0]) {
 			case 'K':
 			case 'Q':
 			case 'J':
@@ -18,19 +14,45 @@ int main()
 				val = 11;
 				break;
 			case 'X':
-				continue;
+				return INT_MIN;
 			default:
 				val = atoi(card_name);
 				if ((val < 1)||(val>10)) {
 					puts("I don't understand that value!");
-					continue;
+					return INT_MAX;
 				}
-		}
-		if ((val>2)&&(val<7)) {
-			count++;
+			}
+	return val;
+}
+
+int counter(int val) {
+	int count = 0;
+	if ((val>2)&&(val<7)) {
+			count = 1;
 		} else if (val == 10) {
-			count--;
+			count = -1;
 		}
+	return count;
+}
+
+int main() {
+	char card_name[3];
+	int count = 0;
+	int val = 0;
+	
+
+	while (card_name[0] != 'X') {
+		puts("enter the card name: ");
+		scanf("%2s", card_name);
+		int val = 0;
+		val = card_values(card_name);
+		if (val == INT_MIN) {
+			break;
+		} else if (val == INT_MAX) {
+			continue;
+		}
+		count += counter(val);
+		
 		printf("Current count: %i\n", count);
 	}
 	return 0;
