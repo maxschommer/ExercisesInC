@@ -2,7 +2,9 @@
 #include <stdlib.h>
 #include <limits.h>
 
-int card_values(char card_name[]) {
+int card_values(char card_name[]) { 
+	/*This function returns the value of the card based on the
+	character entered */
 	int val = 0;
 	switch(card_name[0]) {
 			case 'K':
@@ -26,6 +28,8 @@ int card_values(char card_name[]) {
 }
 
 int counter(int val) {
+	/*This returns the count increment based on 
+	the value entered */
 	int count = 0;
 	if ((val>2)&&(val<7)) {
 			count = 1;
@@ -36,6 +40,8 @@ int counter(int val) {
 }
 
 int main() {
+	/*This is the main function which 
+	contains the loop that counts cards*/
 	char card_name[3];
 	int count = 0;
 	int val = 0;
