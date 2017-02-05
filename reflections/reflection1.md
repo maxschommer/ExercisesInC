@@ -13,3 +13,7 @@ One thing that we didn’t do particularly well during the sprint review was the
 [Exercise 2](../exercises/ex02)
 
 [Exercise 2.5](../exercises/ex02.5)
+
+##ThinkOS reading questions
+
+[Reading Questions](../reading_questions/thinkos.md)
