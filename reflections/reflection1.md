@@ -8,3 +8,6 @@ One thing that we didn’t do particularly well during the sprint review was the
 
 ##Exercises in C
 
+ExercisesInC/exercises/ex01
+ExercisesInC/exercises/ex02
+ExercisesInC/exercises/ex02.5
