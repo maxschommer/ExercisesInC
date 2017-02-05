@@ -17,3 +17,12 @@ One thing that we didn’t do particularly well during the sprint review was the
 ##ThinkOS reading questions
 
 [Reading Questions](../reading_questions/thinkos.md) Note that the answers are in title font.
+
+
+##Exam Question
+
+Lets say you initialize an integer array. 
+
+int x[3] = {2, 30, -25};
+
+What is the value of x[1]? What is the value of 1[x]? Explain why this is the case.
