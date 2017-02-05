@@ -8,7 +8,7 @@ License: GNU GPLv3
 #include <stdio.h>
 #include <stdlib.h>
 
-#define SIZE 5 /*This is defined in constant memory*/
+#define SIZE 10; /*This is defined in constant memory*/
 
 int *foo() {  /*Returns an array/pointer */
     int i;
@@ -48,7 +48,7 @@ int main()
     it is stack memory, and we get the error.*/
     bar();
 
-    for (i=0; i<SIZE; i++) {
+    for (i=0; i<5; i++) {
 	printf("%d\n", array[i]);
     }
 
