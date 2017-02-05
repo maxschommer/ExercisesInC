@@ -5,19 +5,35 @@
 
 1) Give an example of a feature common in interpreted languages that is rare in compiled languages.
 
+#Dynamic memory allocation. When you use the function append in python, memory is added dynamically. In compiled languages, the size of an array is exactly what you define it as.
+
 2) Name two advantages of static typing over dynamic typing.
+
+#In static typed languages, it's always clear what a variable is refering to. A dynamic typed language may need to be run in order to find out. 
+#Static typed languages also check all variable assignments at compile time, so errors in assignments can be caught in functions that haven't been run.
 
 3) Give an example of a static semantic error.
 
+#note: expected ‘const char *’ but argument is of type ‘int’
+#extern int puts (const char *__s);
+
 4) What are two reasons you might want to turn off code optimization?
 
+#1.)It can make debugging difficult
+#2.)It takes longer to compile your code.
+
 5) When you run `gcc` with `-S`, why might the results look different on different computers?
+
+#The assembly code is specific to the processor. 
 
 6) If you spell a variable name wrong, or if you spell a function name wrong, 
 the error messages you get might look very different.  Why?
 
+#One error is from the linker, mispelling a variable name is an error from the compiler.
+
 7) What is a segmentation fault?
 
+#It is when you try to write to an illegal location in memory.
 
 ## Chapter 2
 
@@ -25,15 +41,23 @@ the error messages you get might look very different.  Why?
 ### Processes
 
 1) Give a real-world example of virtualization (ideally not one of the ones in the book).
+#If you request a peer tutor, no peer totors might exist at the time. But a request is then sent to gather peer tutors, and one is then sent to the person who made the request. This means that there are many virtual peer tutors, but only as many exist as are requested.
 
 2) What is the difference between a program and a process?
 
+#A program runs in objects called processes. Processes provide isolation from the rest of the computer, and contain everything the part of the program needs to run. A program might call multiple processes.
+
 3) What is the primary purpose of the process abstraction?  What illusion does the process abstraction create?
+
+#It allows each program to think that it is running completely on its own machine. This prevents one program to write to memory another program is using, and it also allows programmers to write in a way that works on multiple systems because the processes are isolated.
 
 4) What is the kernel?
 
+#A kernel is part of the operating system responsible for making threads.
+
 5) What is a daemon?
  
+#A daemon is a background proocess that is typically part of the operating system.
 
 ## Chapter 3
 
