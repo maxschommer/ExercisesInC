@@ -16,4 +16,4 @@ One thing that we didn’t do particularly well during the sprint review was the
 
 ##ThinkOS reading questions
 
-[Reading Questions](../reading_questions/thinkos.md)
+[Reading Questions](../reading_questions/thinkos.md) Note that the answers are in title font.
