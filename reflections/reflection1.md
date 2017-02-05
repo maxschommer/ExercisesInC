@@ -8,8 +8,8 @@ One thing that we didn’t do particularly well during the sprint review was the
 
 ##Exercises in C
 
-[../exercises/ex01]
+[Exercise 1](../exercises/ex01)
 
-[../exercises/ex02]
+[Exercise 2](../exercises/ex02)
 
-[../exercises/ex02.5]
+[Exercise 2.5](../exercises/ex02.5)
