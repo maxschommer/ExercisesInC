@@ -1,4 +1,4 @@
-##Reflection 1
+#Reflection 1
 
 We set the goal for our first sprint to find out what our project should be, and research everything we need to know in order to do it. We successfully completed this to an extent, but we also missed the mark a bit. I now have a very clear understanding of what needs to be implemented, and what the algorithms are that need to be put in place. What I don’t have is how to do it well in C. I’m being blocked by not being comfortable enough with the language, and so I found that I spent a lot more time on the exercises and readings than I did on the project, because it was easier to think of specific implementation ideas for the exercises than the project. I feel more comfortable now with C than I did, and think that I can work on the project more effectively. 
 
@@ -28,7 +28,7 @@ int x[3] = {2, 30, -25};
 What is the value of x[1]? What is the value of 1[x]? Explain why this is the case.
 
 
-#Solution:
+##Solution:
 
 x[1] evaluates to 30, because x is a pointer, and the [] notation adds the offset inside the bracket to the memory address of the pointer. Thus, x[1] is equivalent to (address of x)+1. 
 
