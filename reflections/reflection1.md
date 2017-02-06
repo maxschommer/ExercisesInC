@@ -26,3 +26,10 @@ Lets say you initialize an integer array.
 int x[3] = {2, 30, -25};
 
 What is the value of x[1]? What is the value of 1[x]? Explain why this is the case.
+
+
+#Solution:
+
+x[1] evaluates to 30, because x is a pointer, and the [] notation adds the offset inside the bracket to the memory address of the pointer. Thus, x[1] is equivalent to (address of x)+1. 
+
+1[x] also evaluates to 30. The reason for this 
