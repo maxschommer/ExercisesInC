@@ -5,35 +5,35 @@
 
 1) Give an example of a feature common in interpreted languages that is rare in compiled languages.
 
-#Dynamic memory allocation. When you use the function append in python, memory is added dynamically. In compiled languages, the size of an array is exactly what you define it as.
+##Dynamic memory allocation. When you use the function append in python, memory is added dynamically. In compiled languages, the size of an array is exactly what you define it as.
 
 2) Name two advantages of static typing over dynamic typing.
 
-#In static typed languages, it's always clear what a variable is refering to. A dynamic typed language may need to be run in order to find out. 
-#Static typed languages also check all variable assignments at compile time, so errors in assignments can be caught in functions that haven't been run.
+##In static typed languages, it's always clear what a variable is refering to. A dynamic typed language may need to be run in order to find out. 
+##Static typed languages also check all variable assignments at compile time, so errors in assignments can be caught in functions that haven't been run.
 
 3) Give an example of a static semantic error.
 
-#note: expected ‘const char *’ but argument is of type ‘int’
-#extern int puts (const char *__s);
+##note: expected ‘const char *’ but argument is of type ‘int’
+##extern int puts (const char *__s);
 
 4) What are two reasons you might want to turn off code optimization?
 
-#1.)It can make debugging difficult
-#2.)It takes longer to compile your code.
+##1.)It can make debugging difficult
+##2.)It takes longer to compile your code.
 
 5) When you run `gcc` with `-S`, why might the results look different on different computers?
 
-#The assembly code is specific to the processor. 
+##The assembly code is specific to the processor. 
 
 6) If you spell a variable name wrong, or if you spell a function name wrong, 
 the error messages you get might look very different.  Why?
 
-#One error is from the linker, mispelling a variable name is an error from the compiler.
+##One error is from the linker, mispelling a variable name is an error from the compiler.
 
 7) What is a segmentation fault?
 
-#It is when you try to write to an illegal location in memory.
+##It is when you try to write to an illegal location in memory.
 
 ## Chapter 2
 
@@ -41,23 +41,23 @@ the error messages you get might look very different.  Why?
 ### Processes
 
 1) Give a real-world example of virtualization (ideally not one of the ones in the book).
-#If you request a peer tutor, no peer totors might exist at the time. But a request is then sent to gather peer tutors, and one is then sent to the person who made the request. This means that there are many virtual peer tutors, but only as many exist as are requested.
+##If you request a peer tutor, no peer totors might exist at the time. But a request is then sent to gather peer tutors, and one is then sent to the person who made the request. This means that there are many virtual peer tutors, but only as many exist as are requested.
 
 2) What is the difference between a program and a process?
 
-#A program runs in objects called processes. Processes provide isolation from the rest of the computer, and contain everything the part of the program needs to run. A program might call multiple processes.
+##A program runs in objects called processes. Processes provide isolation from the rest of the computer, and contain everything the part of the program needs to run. A program might call multiple processes.
 
 3) What is the primary purpose of the process abstraction?  What illusion does the process abstraction create?
 
-#It allows each program to think that it is running completely on its own machine. This prevents one program to write to memory another program is using, and it also allows programmers to write in a way that works on multiple systems because the processes are isolated.
+##It allows each program to think that it is running completely on its own machine. This prevents one program to write to memory another program is using, and it also allows programmers to write in a way that works on multiple systems because the processes are isolated.
 
 4) What is the kernel?
 
-#A kernel is part of the operating system responsible for making threads.
+##A kernel is part of the operating system responsible for making threads.
 
 5) What is a daemon?
  
-#A daemon is a background proocess that is typically part of the operating system.
+##A daemon is a background proocess that is typically part of the operating system.
 
 ## Chapter 3
 
@@ -66,18 +66,32 @@ the error messages you get might look very different.  Why?
 
 1) The Georgian alphabet has 33 letters.  How many bit are needed to specify a letter?
 
+The nearest power of two that contains 33 unique values is 64. Log base 2 of 64 is 6, so that means that 6 bits of information are needed in order to specify a letter.
+
 2) In the UTF-16 character encoding, the binary representation of a character can take up to 32 bits.  
 Ignoring the details of the encoding scheme, how many different characters can be represented?
 
+2^32 = 4294967296. That is how many unique characters a 32 bit number can represent. 
+
 3) What is the difference between "memory" and "storage" as defined in Think OS?
+
+Memory is Random Access Memory, and storage is hard drive memory which means it's persistant. Persistant data will remain on the computer after it is shut down, and is much more permanant than RAM.
 
 4) What is the difference between a GiB and a GB?  What is the percentage difference in their sizes?
 
+One GiB is 2^30 bits. One GB is 10^9 bits. The difference is that 1 GiB = 1.074 GB. The difference is 7.4% in their size.
+
 5) How does the virtual memory system help isolate processes from each other?
+
+Each process is only capable of writing to addresses in their virtual address space. Since each process has its own address space, then that means that it is not physically possible for one process to write in another processes memory, even if it called the same memory address. This is because the MMU translates each processes virtual space to a physical space.
 
 6) Why do you think the stack and the heap are usually located at opposite ends of the address space?
 
+You want to be albe to grow both the stack and the heap during the program execution. One way to do this is to put them on opposite ends of the address space and have them grow towards the center. This leaves plenty of room for each to grow, since the virtual address space is large.
+
 7) What Python data structure would you use to represent a sparse array?
+
+A dictionary, because it hashes a key and associates it with a value. You can put anything in the key location, so if you have a sparse array with large distances between keys, a dictionary doesn't care in terms of look up time and memory allocation.
 
 8) What is a context switch?
 
