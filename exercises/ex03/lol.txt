@@ -1,0 +1,12 @@
+dum2.txt
+dumtwo.txt
+dum.txt
+ex03.c
+ex03.md
+file.txt
+hello
+hellolol
+hellolol.txt
+tee2
+tee3
+tee3.c

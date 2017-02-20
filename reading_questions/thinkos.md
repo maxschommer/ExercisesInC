@@ -66,43 +66,68 @@ the error messages you get might look very different.  Why?
 
 1) The Georgian alphabet has 33 letters.  How many bit are needed to specify a letter?
 
-The nearest power of two that contains 33 unique values is 64. Log base 2 of 64 is 6, so that means that 6 bits of information are needed in order to specify a letter.
+##The nearest power of two that contains 33 unique values is 64. Log base 2 of 64 is 6, so that means that 6 bits of information are needed in order to specify a letter.
 
 2) In the UTF-16 character encoding, the binary representation of a character can take up to 32 bits.  
 Ignoring the details of the encoding scheme, how many different characters can be represented?
 
-2^32 = 4294967296. That is how many unique characters a 32 bit number can represent. 
+##2^32 = 4294967296. That is how many unique characters a 32 bit number can represent. 
 
 3) What is the difference between "memory" and "storage" as defined in Think OS?
 
-Memory is Random Access Memory, and storage is hard drive memory which means it's persistant. Persistant data will remain on the computer after it is shut down, and is much more permanant than RAM.
+##Memory is Random Access Memory, and storage is hard drive memory which means it's persistant. Persistant data will remain on the computer after it is shut down, and is much more permanant than RAM.
 
 4) What is the difference between a GiB and a GB?  What is the percentage difference in their sizes?
 
-One GiB is 2^30 bits. One GB is 10^9 bits. The difference is that 1 GiB = 1.074 GB. The difference is 7.4% in their size.
+##One GiB is 2^30 bits. One GB is 10^9 bits. The difference is that 1 GiB = 1.074 GB. The difference is 7.4% in their size.
 
 5) How does the virtual memory system help isolate processes from each other?
 
-Each process is only capable of writing to addresses in their virtual address space. Since each process has its own address space, then that means that it is not physically possible for one process to write in another processes memory, even if it called the same memory address. This is because the MMU translates each processes virtual space to a physical space.
+##Each process is only capable of writing to addresses in their virtual address space. Since each process has its own address space, then that means that it is not physically possible for one process to write in another processes memory, even if it called the same memory address. This is because the MMU translates each processes virtual space to a physical space.
 
 6) Why do you think the stack and the heap are usually located at opposite ends of the address space?
 
-You want to be albe to grow both the stack and the heap during the program execution. One way to do this is to put them on opposite ends of the address space and have them grow towards the center. This leaves plenty of room for each to grow, since the virtual address space is large.
+##You want to be albe to grow both the stack and the heap during the program execution. One way to do this is to put them on opposite ends of the address space and have them grow towards the center. This leaves plenty of room for each to grow, since the virtual address space is large.
 
 7) What Python data structure would you use to represent a sparse array?
 
-A dictionary, because it hashes a key and associates it with a value. You can put anything in the key location, so if you have a sparse array with large distances between keys, a dictionary doesn't care in terms of look up time and memory allocation.
+##A dictionary, because it hashes a key and associates it with a value. You can put anything in the key location, so if you have a sparse array with large distances between keys, a dictionary doesn't care in terms of look up time and memory allocation.
 
 8) What is a context switch?
 
+##A context switch is when the mmu unloads one process from executing and loads another to begin execution.
+
 In this directory, you should find a subdirectory named `aspace` that contains `aspace.c`.  Run it on your computer and compare your results to mine.
   
-1) Add a second call to `malloc` and check whether the heap on your system grows up (toward larger addresses).  
+##When I ran it, I got this:
+
+##Address of main is 0x563688eec700                                                   
+##Address of global is 0x5636890ed03c                                                 
+##Address of local is 0x7ffe3d990eb4                                                  
+##Address of p is 0x56368a714010
+
+##All of the addresses are much larger than when you ran it. 
+
+1) Add a second call to `malloc` and check whether the heap on your system grows up (toward larger addresses).
+
+##My heap grows up. 
+##Address of p is 0x55f2ac856010
+##Address of d is 0x55f2ac8560a0
 
 2) Add a function that prints the address of a local variable, and check whether the stack grows down.  
 
+##Address of local is 0x7ffe02a8ffac
+##Address of local2 is 0x7ffe02a8ff8c
+
+##8 is less than a, so the stack grows down.
+
 3) Choose a random number between 1 and 32, and allocate two chunks with that size.  
 How much space is there between them?  Hint: Google knows how to subtract hexadecimal numbers.
+
+##Address of chunk1 is 0x55e4c997f130
+##Address of chunk2 is 0x55e4c997f150
+
+##Difference is 32 between the memory addresses.
 
 
 ## Chapter 4
@@ -113,19 +138,33 @@ How much space is there between them?  Hint: Google knows how to subtract hexade
 1) What abstractions do file systems provide?  Give an example of something that is logically 
 true about files systems but not true of their implementations.
 
+##File systems contain logically continuous pieces of information called files. If you start reading a file, you can easily continue to the end by simply reading the "next" piece of information. File systems are actually implemented in many chuncks, and they are sometimes non-contiguous, which means that pointers are often used to point from one part of the file to another. 
+
 2) What information do you imagine is stored in an `OpenFileTableEntry`?
 
+##A list of pointers to all of the chunks of memory that contain the file, or a list of pointers to all chunks of memory which contain pointers to chunks of memory for the file, or a list of pointers to chunks of memory which contain pointers to chunks of memory that contain pointers to chunks of memory for the file.
+
 3) What are some of the ways operating systems deal with the relatively slow performance of persistent storage?
+
+##They can read a un-called for parts of a file, assuming that they are going to be wanted in the future. They also run a bunch of other processes while reading or writing from persitant storage. They can also cache storage in memory assuming that the program will need it for a later time.
 
 4) Suppose your program writes a file and prints a message indicating that it is done writing.  
 Then a power cut crashes your computer.  After you restore power and reboot the computer, you find that the 
 file you wrote is not there.  What happened?
 
+##The file was "buffered", meaning that it was written to in memory, but because it didn't fill up a whole chunk, it wasn't actually written to persitant storage. 
+
 5) Can you think of one advantage of a File Allocation Table over a UNIX inode?  Or an advantage of a inode over a FAT?
+
+##A FAT is easy to read consecutively. However, if you want to find the end of a file, you have to follow the linked list from the beginning. An inode is more deep, meaning that you can find any piece of the file by just finding the pointer to the chunk in the metadata. 
 
 6) What is overhead?  What is fragmentation?
 
+##Overhead is how much memory is needed to store a given amount of information. This could be in pointers, metadata, or other necessary structures for creating a filesystem. Fragmentation occurs when a file is placed on many different physical locations on a hard drive, which can cause ineffiencies in reads and writes. 
+
 7) Why is the "everything is a file" principle a good idea?  Why might it be a bad idea?
+
+##This allows you to easily send and recieve information between processes. It also allows programs to work with a bunch of different kinds of programs since its stream of data is treated as a file which other processes can easily create and read. It might be a bad idea in the same way that duck typing is a bad idea in python: You can send the wrong kind of information to another process without recieving a warning, which could be a security risk.
 
 If you would like to learn more about file systems, a good next step is to learn about journaling file systems.  
 Start with [this Wikipedia article](https://en.wikipedia.org/wiki/Journaling_file_system), then 
