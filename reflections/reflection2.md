@@ -13,3 +13,4 @@ We now have the problem that, since I've worked so much on it, I am also the one
 
 I worked on Ch3 and Ch4 this sprint. 
 
+[Ex03](#https://github.com/maxschommer/ExercisesInC/tree/master/exercises/ex03)
