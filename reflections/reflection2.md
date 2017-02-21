@@ -8,3 +8,8 @@ I also worked for around 20 hours over the sprint on the project, and wrote arou
 
 We now have the problem that, since I've worked so much on it, I am also the one who understands the code the most (which isn't beautiful since it's still in a state of work). I'm not sure if I work less on the project, whether its possible for the rest of the team to build off of what I've made to create an integrated product in time. I think a lot of what I'm going to be doing in the future will be not coding myself, but pair programming with my teammates to get them more comfortable with the code and how everything works so they can work independantly on the project.
 
+
+#Links to Head First C exercises
+
+I worked on Ch3 and Ch4 this sprint. 
+
