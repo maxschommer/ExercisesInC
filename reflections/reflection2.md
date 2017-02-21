@@ -11,8 +11,14 @@ We now have the problem that, since I've worked so much on it, I am also the one
 
 #Links to Head First C exercises
 
-I worked on Ch3 and Ch4 this sprint. 
+I worked on Ch3 and Ch4 this sprint. For Ch4, I wasn't able to get the code to compile properly once I broke the main function into a separate file, and asked several peers about it, who said it looked like I was doing it correctly.
 
 [Ex03](https://github.com/maxschommer/ExercisesInC/tree/master/exercises/ex03)
 
-[Ex04](
+[Ex04](https://github.com/maxschommer/ExercisesInC/tree/master/exercises/ex04)
+
+#Links to Think OS reading questions
+
+
+
+
