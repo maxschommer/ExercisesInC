@@ -1,18 +1,11 @@
 #include "trout.h"
 
-
-
-/* NOTES: system calls beginning with a capital letter are Stevens's
-   wrapper functions.  Each one invokes the method and checks the
-   return value.  If the call fails, it invokes err_sys, which prints
-   the error message and quits.
-
-   Types that begin with a capital letter are usually typedefs
-   that I added because (1) I hate seeing the word struct all over
-   the place, and (2) it lets me pretend I am writing Java. */
-
-/* sig_alrm: alarm handler sends a message to the process through
-   a pipe, causing select to return */
+int max_ttl = 30;
+int datalen = sizeof (Rec);         /* length of the data in a datagram */
+int nprobes = 2;
+int seq = 0;
+Rec *rec = (Rec *) sendbuf;
+u_short dport = 32768 + 668;        /* destination port -- hopefully unused */
 
 void sig_alrm (int signo)
 {
@@ -301,4 +294,3 @@ void loop_ttl ()
     if (done > 0) break;
   }
 }
-

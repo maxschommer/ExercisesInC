@@ -11,7 +11,7 @@ int main (int argc, char **argv)
     switch (c) {
     case 'm':
       if ( (max_ttl = atoi(optarg)) <= 1) {
-	err_quit ("invalid -m value");
+  err_quit ("invalid -m value");
       }
       break;
     default:
@@ -26,9 +26,9 @@ int main (int argc, char **argv)
   ai = Host_serv (host, NULL, 0, 0);
 
   printf ("trout to %s (%s): %d hops max, %d data bytes\n",
-	  ai->ai_canonname,
-	  Sock_ntop_host (ai->ai_addr, ai->ai_addrlen),
-	  max_ttl, datalen);
+    ai->ai_canonname,
+    Sock_ntop_host (ai->ai_addr, ai->ai_addrlen),
+    max_ttl, datalen);
 
   if (ai->ai_family != AF_INET) {
     err_quit ("unknown address family %d", ai->ai_family);
