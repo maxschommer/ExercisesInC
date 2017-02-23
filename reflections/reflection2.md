@@ -19,10 +19,13 @@ I worked on Ch3 and Ch4 this sprint. For Ch4, I wasn't able to get the code to c
 
 #Links to Think OS reading questions
 
-[ThinkOS]()
+[ThinkOS](https://github.com/maxschommer/ExercisesInC/blob/master/reading_questions/thinkos.md)
 
 #Exam Question
 
+What is the difference between printf(), and fprintf()? Why would you use one over the other?
 
+###An answer
 
+printf() is a generalized form of fprintf(), whos output is stdout. fprintf() allows you to print to any specified output, which means that all of the power of datastreams is at your disposal. printf(), however, is usually better for most cases because stdout is what is desired. If you want to print errors, or to a different data stream, fprintf() is what you should use. 
 
