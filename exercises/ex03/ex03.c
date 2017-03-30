@@ -47,3 +47,16 @@ int main(int argc, char *argv[]){
 	
 
 }
+
+/*Reflect: what worked, what slowed you down? What would you do differently next time?
+
+Figuring out how to use command line arguments took a lot longer than expected. After
+I figured out how to do that, the next most difficult part was trying to read the file.
+I couldn't figure out how to read the file completely, so if any line is longer than 99
+chars long, the program won't read it.
+
+Compare your solution to the real thing. What do you see in professional code that is not in your solution?
+
+The real solution doesn't have a character cap. It can read arbitrarily large files. There
+is also a lot more error checking and command line options.
+*/
