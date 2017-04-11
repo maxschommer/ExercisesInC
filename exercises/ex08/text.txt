@@ -1,0 +1,1 @@
+hello this is a counter of words. it should handle stuff, like a counter of words should. 
