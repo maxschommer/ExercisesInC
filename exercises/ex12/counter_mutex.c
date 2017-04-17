@@ -82,6 +82,7 @@ typedef struct {
     int counter;
     int end;
     int *array;
+    Semaphore *sem;
 } Shared;
 
 /*  make_shared
@@ -156,18 +157,22 @@ void join_thread (pthread_t thread)
  */
 void child_code (Shared *shared)
 {
-    printf ("Starting child at counter %d\n", shared->counter);
+    //printf ("Starting child at counter %d\n", shared->counter);
 
     while (1) {
+        
 	    if (shared->counter >= shared->end) {
 	        return;
 	    }
+        sem_wait((shared->sem)); 
 	    shared->array[shared->counter]++;
 	    shared->counter++;
-        
+        sem_signal((shared->sem));
+
 	    if (shared->counter % 100000 == 0) {
 	        //printf ("%d\n", shared->counter);
 	    }
+        
     }
 }
 
@@ -182,7 +187,7 @@ void *entry (void *arg)
 {
     Shared *shared = (Shared *) arg;
     child_code (shared);
-    printf ("Child done.\n");
+    //printf ("Child done.\n");
     pthread_exit (NULL);
 }
 
@@ -211,12 +216,15 @@ void check_array (Shared *shared)
  *  Creates the given number of children and runs them concurrently.
  *
  */
+
+
 int main ()
 {
     int i;
     pthread_t child[NUM_CHILDREN];
 
     Shared *shared = make_shared (100000000);
+    shared->sem = make_semaphore(1);
 
     for (i=0; i<NUM_CHILDREN; i++) {
 	child[i] = make_thread (entry, shared);
