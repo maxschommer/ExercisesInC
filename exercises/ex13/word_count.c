@@ -59,6 +59,7 @@ void accumulator (gpointer key, gpointer value, gpointer user_data)
 			      (gpointer) pair, 
 			      (GCompareDataFunc) compare_pair,
 			      NULL);
+    g_free(pair);
 }
 
 /* Increments the frequency associated with key. */
@@ -69,10 +70,14 @@ void incr (GHashTable* hash, gchar *key)
     if (val == NULL) {
 	gint *val1 = g_new (gint, 1);
 	*val1 = 1;
+    
 	g_hash_table_insert (hash, key, val1);
+    g_free(val1);
     } else {
 	*val += 1;
+    g_free(val);
     }
+
 }
 
 int main (int argc, char** argv)
